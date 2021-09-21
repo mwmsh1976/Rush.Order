@@ -13,7 +13,7 @@ namespace Rush.Order.Validators
 {
     public class StatusValidatorAttribute : IAsyncActionFilter
     {
-        private IServiceClient _serviceClient;
+        private readonly IServiceClient _serviceClient;
 
         public StatusValidatorAttribute(IServiceClient serviceClient)
         {
@@ -25,13 +25,13 @@ namespace Rush.Order.Validators
             if (context.ActionArguments.Count > 0 &&
                 context.ActionArguments.ContainsKey("updateOrderRequest"))
             {
-                var request = context.ActionArguments["updateOrderRequest"] as UpdateOrderRequest;
+                UpdateOrderRequest request = context.ActionArguments["updateOrderRequest"] as UpdateOrderRequest;
                 if(request != null)
                 {
                     Models.Enums.Status statusValue;
                     if (!Enum.TryParse(Convert.ToString(request.Status), out statusValue))
                     {
-                        var modelState = new ModelStateDictionary(){;
+                        var modelState = new ModelStateDictionary();
                         modelState.AddModelError("Status", "The provided status is invalid.");
                         context.Result = new BadRequestObjectResult(modelState);
                         return;
