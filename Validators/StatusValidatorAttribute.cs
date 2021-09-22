@@ -28,35 +28,34 @@ namespace Rush.Order.Validators
                 UpdateOrderRequest request = context.ActionArguments["updateOrderRequest"] as UpdateOrderRequest;
                 if(request != null)
                 {
-                    Models.Enums.Status statusValue;
-                    if (!Enum.TryParse(Convert.ToString(request.Status), out statusValue))
+                    if (!Enum.TryParse(Convert.ToString(request.Status), out Models.Enums.Status statusValue))
                     {
                         var modelState = new ModelStateDictionary();
                         modelState.AddModelError("Status", "The provided status is invalid.");
                         context.Result = new BadRequestObjectResult(modelState);
                         return;
                     }
-                    
+
                 }                
             }
             await next();
         }
 
-        public async Task OnActionExecutedAsync(ActionExecutingContext context, ActionExecutionDelegate next)
-        {
+        //public async Task OnActionExecutedAsync(ActionExecutingContext context, ActionExecutionDelegate next)
+        //{
             //This would be where we would log to the message queue
-            var resultObject = context.Result as Models.Order;
-            if (resultObject != null )
-            {
-                if (resultObject.Status.ToLower() == "billed" ||
-                   resultObject.Status.ToLower() == "shipped" ||
-                   resultObject.Status.ToLower() == "delivered")
-                {
-                    var loggingContent = new StringContent(JsonConvert.SerializeObject("This is the log message"),
-                    Encoding.UTF8, "application/json");
-                    var logIt = await _serviceClient.PostAsync<LogResult>("https://api.rush.logging.com/logentry/", loggingContent);
-                }
-            }                        
-        }
+            //var resultObject = context.Result as Models.Order;
+            //if (resultObject != null )
+            //{
+            //    if (resultObject.Status.ToLower() == "billed" ||
+            //       resultObject.Status.ToLower() == "shipped" ||
+            //       resultObject.Status.ToLower() == "delivered")
+            //    {
+            //        var loggingContent = new StringContent(JsonConvert.SerializeObject("This is the log message"),
+            //        Encoding.UTF8, "application/json");
+            //        var logIt = await _serviceClient.PostAsync<LogResult>("https://api.rush.logging.com/logentry/", loggingContent);
+            //    }
+            //}                        
+        //}
     }
 }

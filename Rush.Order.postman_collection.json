@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "995db21f-e76d-46a1-8805-a2990f55a6e1",
+		"name": "Risk.Order",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getOrderByOrderNumber/V1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderNumber\": \"0000000000000002\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:22778/order/getOrderByOrderNumber/V1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "22778",
+					"path": [
+						"order",
+						"getOrderByOrderNumber",
+						"V1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getOrderListByCustomerIdAndDate/V1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": 1,\r\n    \"startDate\": \"2021-09-20\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:22778/order/getOrderListByCustomerIdAndDate/V1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "22778",
+					"path": [
+						"order",
+						"getOrderListByCustomerIdAndDate",
+						"V1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addOrder/V1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:22778/order/addOrder/V1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "22778",
+					"path": [
+						"order",
+						"addOrder",
+						"V1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateOrder/V1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\": 3,\r\n    \"total\": 250,\r\n    \"status\": \"Billed\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:22778/order/updateOrder/V1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "22778",
+					"path": [
+						"order",
+						"updateOrder",
+						"V1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -5,8 +5,8 @@ namespace Rush.Order.Domain
 {
     public class OrderListRequest : IOrderListRequest
     {
-        public long CustomerId { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+        public Int64 CustomerId { get; set; }
+        public DateTimeOffset StartDate { get; set; }
+        public DateTimeOffset? EndDate { get; set; }
     }
 }

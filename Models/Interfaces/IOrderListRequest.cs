@@ -4,7 +4,7 @@ namespace Rush.Order.Models.Interfaces
 {
     public interface IOrderListRequest
     {
-        DateTime StartDate { get; set; }
-        DateTime? EndDate { get; set; }
+        DateTimeOffset StartDate { get; set; }
+        DateTimeOffset? EndDate { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using Rush.Order.Models;
 using Rush.Order.Repositories.Interfaces;
 using Rush.Order.Services.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,7 +22,21 @@ namespace Rush.Order.Services
         public async Task<Models.Order> GetOrderByOrderNumber(string orderNumber)
         {
            var domainOrder = await _orderRepository.GetOrderByOrderNumber(orderNumber);
-            return _orderMapper.MapDomainOrderToModel(domainOrder);
+            if(domainOrder != null)
+            {
+                return _orderMapper.MapDomainOrderToModel(domainOrder);
+            }
+            return null;
+        }
+
+        public async Task<Models.Order> GetOrderByOrderId(Int64 orderId)
+        {
+            var domainOrder = await _orderRepository.GetOrderByOrderId(orderId);
+            if (domainOrder != null)
+            {
+                return _orderMapper.MapDomainOrderToModel(domainOrder);
+            }
+            return null;
         }
 
         public async Task<List<Models.Order>> GetOrdersByCustomerIdAndDate(OrderListRequest orderListRequest)
@@ -35,7 +50,7 @@ namespace Rush.Order.Services
             return null;
         }
 
-        public async Task<Models.Order> AddOrder(long customerId)
+        public async Task<Models.Order> AddOrder(Int64 customerId)
         {
             var domainOrder = await _orderRepository.AddOrder(customerId);
             return _orderMapper.MapDomainOrderToModel(domainOrder);
@@ -46,7 +61,11 @@ namespace Rush.Order.Services
             var domainUpdateOrderRequest = _orderMapper
                 .MapModelUpdateOrderRequestToDomain(updateOrderRequest);
             var domainOrder = await _orderRepository.UpdateOrder(domainUpdateOrderRequest);
-            return _orderMapper.MapDomainOrderToModel(domainOrder);
+            if(domainOrder != null)
+            {
+                return _orderMapper.MapDomainOrderToModel(domainOrder);
+            }
+            return null;
         }
 
     }

@@ -7,8 +7,9 @@ namespace Rush.Order.Models
 {
     public class OrderListRequest : CustomerIdRequest, IOrderListRequest
     {
+
         [Required(ErrorMessage = "StartDate is a required field.")]
-        public DateTime StartDate { get; set; }
-        public DateTime? EndDate { get; set; }
+        public DateTimeOffset StartDate { get; set; }
+        public DateTimeOffset? EndDate { get; set; }
     }
 }

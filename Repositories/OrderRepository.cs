@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using Rush.Order.Domain;
 using Rush.Order.Repositories.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -17,6 +18,13 @@ namespace Rush.Order.Repositories
             _context = context;
         }
         
+        public async Task<Domain.Order> GetOrderByOrderId(Int64 orderId)
+        {
+            return await _context.Order
+                    .Where(o => o.Id == orderId)
+                    .FirstOrDefaultAsync();
+        }
+
         public async Task<Domain.Order> GetOrderByOrderNumber(string orderNumber)
         {
             var order = await _context.Order
@@ -54,21 +62,30 @@ namespace Rush.Order.Repositories
             return null;
         }
 
-        public async Task<Domain.Order> AddOrder(long customerId)
+        public async Task<Domain.Order> AddOrder(Int64 customerId)
         {
-            var customerIdParm = new SqlParameter("@CustomerId", customerId);            
-            return await _context.Order.FromSqlRaw("EXEC sp_AddOrder, @CustomerId", 
-                customerIdParm).FirstOrDefaultAsync();            
+            var customerIdParm = new SqlParameter("@CustomerId", System.Data.SqlDbType.BigInt)
+            {
+                Value = customerId
+            };
+            var newOrders = await _context.Order.FromSqlRaw("EXEC sp_AddOrder @CustomerId",
+                customerIdParm).ToListAsync();
+            if (newOrders.Any()) { return newOrders[0]; }
+            return null;
         }
-
+        
         public async Task<Domain.Order> UpdateOrder(UpdateOrderRequest updateOrderRequest)
         {
             var idParm = new SqlParameter("@Id", updateOrderRequest.Id);
             var totalParm = new SqlParameter("@Total", updateOrderRequest.Total);
             var statusParm = new SqlParameter("@Status", updateOrderRequest.Status);
-            return await _context.Order.FromSqlRaw("EXEC sp_UpdateOrder, @Id,@Total,@Status", 
-                idParm, totalParm, statusParm)
-                .FirstOrDefaultAsync();
+            var result = await _context.Database.ExecuteSqlRawAsync("EXEC sp_UpdateOrder @Id,@Total,@Status",
+                idParm, totalParm, statusParm);
+            if (result == -1)
+            {
+                return await GetOrderByOrderId(updateOrderRequest.Id);
+            }
+            return null;
         }
 
     }

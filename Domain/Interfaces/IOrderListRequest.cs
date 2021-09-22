@@ -4,8 +4,8 @@ namespace Rush.Order.Domain.Interfaces
 {
     public interface IOrderListRequest
     {
-        long CustomerId { get; set; }
-        DateTime StartDate { get; set; }
-        DateTime? EndDate { get; set; }
+        Int64 CustomerId { get; set; }
+        DateTimeOffset StartDate { get; set; }
+        DateTimeOffset? EndDate { get; set; }
     }
 }

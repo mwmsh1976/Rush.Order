@@ -63,6 +63,7 @@ namespace Rush.Order.Controllers
         [HttpPost]
         [Route("updateOrder/V1")]
         [ServiceFilter(typeof(StatusValidatorAttribute))]
+        [ServiceFilter(typeof(OrderExistsAttribute))]
         public async Task<ActionResult<Models.Order>> UpdateOrder([FromBody] UpdateOrderRequest updateOrderRequest)
 
         {
