@@ -1,0 +1,12 @@
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\bin\Debug\net5.0\Rush.Api.Core.Client.deps.json
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\bin\Debug\net5.0\Rush.Api.Core.Client.dll
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\bin\Debug\net5.0\ref\Rush.Api.Core.Client.dll
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\bin\Debug\net5.0\Rush.Api.Core.Client.pdb
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\obj\Debug\net5.0\Rush.Api.Core.Client.csproj.AssemblyReference.cache
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\obj\Debug\net5.0\Rush.Api.Core.Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\obj\Debug\net5.0\Rush.Api.Core.Client.AssemblyInfoInputs.cache
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\obj\Debug\net5.0\Rush.Api.Core.Client.AssemblyInfo.cs
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\obj\Debug\net5.0\Rush.Api.Core.Client.csproj.CoreCompileInputs.cache
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\obj\Debug\net5.0\Rush.Api.Core.Client.dll
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\obj\Debug\net5.0\ref\Rush.Api.Core.Client.dll
+C:\Users\Michael\Desktop\Wells Fargo\Rush\Rush.Api.Core.Client\obj\Debug\net5.0\Rush.Api.Core.Client.pdb
